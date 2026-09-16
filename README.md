@@ -1,54 +1,75 @@
 # buildmyaifreedom.com
 
-One-page site for **buildmyaifreedom** — AI-powered funnels, marketing and growth systems.
-Built from the brochure shared at **Confluence 2026** (Hyatt Ahmedabad), where SUGH is a media partner.
+Site for **Build My AI Freedom** — AI-powered performance marketing, funnels and growth systems.
 
 Founders: **Palash Rajak** (+91 91096 37004) · **Nitin Joshi** (+91 78219 84708)
 
 ---
 
+## Pages
+
+| URL | File | What it is |
+|-----|------|------------|
+| `/` | `index.html` | **Homepage** — performance-marketing page (dark/gold). Every CTA opens WhatsApp; no form. |
+| `/confluence/` | `confluence/index.html` | Page built from the **Confluence 2026** brochure (Hyatt Ahmedabad). Lead form in a modal → Google Sheet. |
+| `/new/` | `new/index.html` | Redirect to `/`, keeping any `?utm_…` tags and `#anchor`. `/new` was the homepage's address before 16 Sep 2026. |
+
 ## Structure
 
 ```
-index.html            the whole site (self-contained HTML + CSS + JS)
-CNAME                 buildmyaifreedom.com
-.nojekyll             skip Jekyll processing on GitHub Pages
+index.html              homepage
+confluence/index.html   Confluence brochure page (references ../assets/)
+new/index.html          redirect stub
+images/
+  logo/                 Build My AI Freedom logo
+  proof/                campaign tracker screenshot (Live Proof section)
+  team/                 team portraits, self-hosted
 assets/
-  founders-confluence.jpg   hero photo — Confluence 2026
+  founders-confluence.jpg   founders photo — homepage Team section + Confluence hero
   founders-brand.jpg        brand photo from the brochure (spare)
   confluence-logo.png       Confluence 2026 logo (white, for dark backgrounds)
 setup/
-  apps-script.gs      Google Apps Script lead endpoint (optional, see below)
+  apps-script.gs        Google Apps Script lead endpoint for the Confluence form
+CNAME                   buildmyaifreedom.com
+.nojekyll               skip Jekyll processing on GitHub Pages
 ```
 
-Page sections: Header → Hero → Proof of speed → What we do → The three systems →
-How we work / Who it's for → Free AI Growth Audit form → Footer, plus a floating WhatsApp button.
+Homepage sections: Nav → Hero → Problem → Difference → Process → Services → Comparison →
+Results → Live Proof → Team → FAQ → Final CTA → Footer, plus a floating WhatsApp button.
+
+Before editing the homepage, search it for `fill-me` — those spans are placeholders
+(dashed gold underline) waiting for real numbers.
 
 ---
 
-## The one config block
+## Confluence page config
 
-Everything editable lives at the bottom of `index.html`:
+The editable block sits at the bottom of `confluence/index.html`:
 
 ```js
 var CONFIG = {
   WHATSAPP_NUMBER : '917821984708',                 // digits only, with country code
   WHATSAPP_MESSAGE: 'Hi Ai Powered tech partners,', // floating-button prefill
-  FORM_ENDPOINT   : ''                              // Apps Script /exec URL
+  FORM_ENDPOINT   : 'https://script.google.com/macros/s/…/exec'  // live Sheet endpoint
 };
 ```
 
-**The form works with `FORM_ENDPOINT` empty.** In that mode a submit shows the success
-state and hands the full lead straight to WhatsApp, so nothing is ever lost. Wire the
-endpoint when you want leads landing in a Sheet as well.
+If `FORM_ENDPOINT` is ever emptied, the form still works: a submit shows the success state
+and hands the full lead to WhatsApp, so nothing is lost.
 
-### Wiring the Google Sheet (2 minutes)
+### Re-wiring the Google Sheet
 
-1. New Google Sheet, first tab named `Leads`.
+1. Google Sheet with a tab named `Leads`.
 2. Extensions → Apps Script → paste `setup/apps-script.gs`.
 3. Deploy → New deployment → **Web app**, Execute as **Me**, Access **Anyone**.
-4. Copy the `/exec` URL into `CONFIG.FORM_ENDPOINT`, commit, push.
-5. Optional: set `NOTIFY_EMAILS` in the script for an instant email on every lead.
+4. Run it once from the editor and approve the permissions — until you do, the `/exec` URL
+   returns 403 "Access denied" even with Access set to Anyone.
+5. Copy the `/exec` URL into `CONFIG.FORM_ENDPOINT`, commit, push.
+6. Optional: set `NOTIFY_EMAILS` in the script for an instant email on every lead.
+
+Testing the endpoint with curl: use `curl -L --data-urlencode …` and **don't** pass `-X POST`.
+Apps Script answers with a redirect, and `-X POST` forces POST onto the redirected URL,
+which returns a misleading 405.
 
 ---
 

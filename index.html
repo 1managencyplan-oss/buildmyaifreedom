@@ -429,6 +429,55 @@
     display:block; width:100%; min-width:900px; height:auto;
   }
 
+  /* ---------------- TEAM ---------------- */
+  .founders{
+    display:grid; grid-template-columns:1.2fr 1fr;
+    border:1px solid var(--line);
+    background:var(--bg-card);
+    margin-bottom:26px;
+  }
+  .founders-photo{position:relative; min-height:420px; overflow:hidden;}
+  .founders-photo img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center 35%;
+    transition:transform 1.2s ease;
+  }
+  .founders:hover .founders-photo img{transform:scale(1.03);}
+  .founders-body{
+    padding:52px 46px; border-left:1px solid var(--line);
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .team-role{
+    display:block; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:14px;
+  }
+  .founders-body h3{
+    font-family:var(--serif); font-weight:700;
+    font-size:clamp(26px,3vw,36px); line-height:1.15; margin-bottom:22px;
+  }
+  .founders-body blockquote{
+    font-family:var(--serif); font-style:italic;
+    font-size:clamp(17px,1.8vw,20px); line-height:1.55; color:var(--text);
+    border-left:2px solid var(--gold-deep); padding-left:20px;
+  }
+  .founders-body .caption{
+    margin-top:30px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:12.5px; color:var(--text-faint);
+  }
+  .team-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
+  .member{
+    display:grid; grid-template-columns:210px 1fr;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, var(--bg-card), var(--bg));
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .member:hover{border-color:var(--gold-deep); transform:translateY(-6px);}
+  .member-photo{position:relative; min-height:300px; overflow:hidden; border-right:1px solid var(--line);}
+  .member-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .member-body{padding:34px 30px;}
+  .member-body h3{font-family:var(--serif); font-size:23px; font-weight:600; line-height:1.2; margin-bottom:14px;}
+  .member-body p{color:var(--text-dim); font-size:14.5px;}
+
   /* ---------------- FAQ ---------------- */
   .faq{background:var(--bg-soft);}
   .faq-list{max-width:800px; margin:0 auto;}
@@ -500,6 +549,10 @@
     .hero-stats .stat:nth-child(2){border-right:none;}
     table.compare{font-size:13px;}
     table.compare th, table.compare td{padding:14px;}
+    .founders{grid-template-columns:1fr;}
+    .founders-photo{min-height:0; aspect-ratio:4/3;}
+    .founders-body{border-left:none; border-top:1px solid var(--line); padding:38px 32px;}
+    .team-grid{grid-template-columns:1fr;}
   }
   @media (max-width:600px){
     .wrap{padding:0 22px;}
@@ -507,6 +560,10 @@
     .services-grid{grid-template-columns:1fr;}
     .footer-top{flex-direction:column;}
     .footer-links{gap:40px;}
+    .founders-body{padding:32px 24px;}
+    .member{grid-template-columns:1fr;}
+    .member-photo{min-height:0; aspect-ratio:1/1; border-right:none; border-bottom:1px solid var(--line);}
+    .member-body{padding:28px 24px;}
   }
 </style>
 </head>
@@ -520,6 +577,7 @@
       <a href="#process">Process</a>
       <a href="#results">Results</a>
       <a href="#live-proof">Live Proof</a>
+      <a href="#team">Team</a>
       <a href="#faq">FAQ</a>
     </div>
     <a class="nav-cta" href="https://wa.me/919109637004?text=Hi%20Build%20My%20AI%20Freedom%2C%20I%27d%20like%20a%20free%20funnel%20audit." target="_blank" rel="noopener">
@@ -775,6 +833,51 @@
   </div>
 </section>
 
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">The Team</span>
+      <h2>The People Behind <em>the AI</em></h2>
+      <p>AI does the heavy lifting. These are the people who design, build and run the systems behind it.</p>
+    </div>
+
+    <div class="founders reveal">
+      <div class="founders-photo">
+        <img src="assets/founders-confluence.jpg" alt="Palash Rajak and Nitin Joshi, co-founders of Build My AI Freedom, at Confluence 2026" width="1400" height="1050" loading="lazy">
+      </div>
+      <div class="founders-body">
+        <span class="team-role">Co-Founders</span>
+        <h3>Palash Rajak &amp;<br>Nitin Joshi</h3>
+        <blockquote>Everyone has AI. Almost no one has an AI Strategy. We build the systems that turn AI from experiments into revenue.</blockquote>
+        <p class="caption">Pictured at Confluence 2026 · Hyatt Ahmedabad</p>
+      </div>
+    </div>
+
+    <div class="team-grid reveal">
+      <article class="member">
+        <div class="member-photo">
+          <img src="images/team/mrunali-daharwal.webp" alt="Mrunali Daharwal, Lead Guardian at Build My AI Freedom" width="500" height="500" loading="lazy" style="object-position:52% 30%;">
+        </div>
+        <div class="member-body">
+          <span class="team-role">Lead Guardian</span>
+          <h3>Mrunali Daharwal</h3>
+          <p>Mrunali is our Lead Engagement Strategist. She specializes in intelligent customer interaction, ensuring every touchpoint in your sales cycle is optimized. She builds advanced AI workflows that streamline your pipeline, making sure no lead ever falls through the cracks.</p>
+        </div>
+      </article>
+      <article class="member">
+        <div class="member-photo">
+          <img src="images/team/vaishnavi-verma.webp" alt="Vaishnavi Verma, Automation Specialist at Build My AI Freedom" width="500" height="500" loading="lazy" style="object-position:58% 20%;">
+        </div>
+        <div class="member-body">
+          <span class="team-role">Automation Specialist</span>
+          <h3>Vaishnavi Verma</h3>
+          <p>Vaishnavi is an expert in AI Automation and Funnel Architecture. By blending technical automation with deep consumer psychology, she has successfully scaled multiple service-based businesses into global powerhouses through the art of automated, personalized engagement.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="faq" id="faq">
   <div class="wrap">
     <div class="section-head reveal">
@@ -828,6 +931,7 @@
           <a href="#services">Services</a>
           <a href="#process">Process</a>
           <a href="#results">Results</a>
+          <a href="#team">Team</a>
           <a href="#faq">FAQ</a>
         </div>
         <div class="footer-col">
