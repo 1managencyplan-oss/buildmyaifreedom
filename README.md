@@ -12,7 +12,23 @@ Founders: **Palash Rajak** (+91 91096 37004) · **Nitin Joshi** (+91 78219 84708
 |-----|------|------------|
 | `/` | `index.html` | **Homepage** — performance-marketing page (dark/gold). Every CTA opens WhatsApp; no form. |
 | `/confluence/` | `confluence/index.html` | Page built from the **Confluence 2026** brochure (Hyatt Ahmedabad). Lead form in a modal → Google Sheet. |
+| `/about/` | `about/index.html` | Company story, founders, team, Confluence partnership. |
+| `/contact/` | `contact/index.html` | WhatsApp for both founders, support email, link to the enquiry form. |
+| `/privacy/` | `privacy/index.html` | Privacy policy. |
+| `/terms/` | `terms/index.html` | Terms & conditions. |
+| `/refund/` | `refund/index.html` | Refund policy. |
+| `/cookies/` | `cookies/index.html` | Cookie policy. |
 | `/new/` | `new/index.html` | Redirect to `/`, keeping any `?utm_…` tags and `#anchor`. `/new` was the homepage's address before 16 Sep 2026. |
+
+The six secondary pages share `assets/site.css` and repeat the same nav and footer markup
+(GitHub Pages has no templating here — `.nojekyll` is set). **If you change the footer links,
+change them in all eight pages**, including the two that carry their own inline CSS
+(`index.html` and `confluence/index.html`).
+
+The legal pages describe the site as it actually behaves: four form fields, no cookies, no
+analytics, four third-party services. If you add an analytics or advertising pixel, update
+`/privacy/` and `/cookies/` at the same time — and add a consent banner, which the site
+currently does not need.
 
 ## Structure
 
