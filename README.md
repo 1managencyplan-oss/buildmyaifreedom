@@ -37,8 +37,10 @@ CNAME                   buildmyaifreedom.com
 Homepage sections: Nav → Hero → Problem → Difference → Process → Services → Comparison →
 Results → Live Proof → Team → FAQ → Final CTA → Footer, plus a floating WhatsApp button.
 
-Before editing the homepage, search it for `fill-me` — those spans are placeholders
-(dashed gold underline) waiting for real numbers.
+The homepage was built with `fill-me` placeholder spans (dashed gold underline) for
+numbers to be supplied later. All of them are now filled — if you add a new placeholder,
+use that class so it's obvious it still needs a real value. Finished copy that just wants
+gold emphasis uses `.accent` instead.
 
 ---
 
